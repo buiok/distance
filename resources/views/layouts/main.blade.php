@@ -11,8 +11,20 @@
 <body>
     @yield('content')
 
-    <script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#address").suggestions({
+                token: "fbc34e0e4203136a4c33c16edd0a69f2433e01a9",
+                type: "ADDRESS",
+                onSelect: function(suggestion) {
+                    //console.log(suggestion);
+                    $('#geo_lat').val(suggestion.data.geo_lat);
+                    $('#geo_lon').val(suggestion.data.geo_lon);
+                }
+            });
+        })
+    </script>
 </body>
 </html>
